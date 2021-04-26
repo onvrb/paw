@@ -1,85 +1,70 @@
-var mongoose = require('mongoose');
-var Account = require('../models/account');
+var mongoose = require("mongoose");
+var Account = require("../models/account");
 
 var accountController = {};
 
-// mostra todos accounts 
-accountController.showAll = function(req, res){
-    Account.find({}).exec((err, dbaccounts)=>{
-        if (err){
-            console.log('Erro a ler');
-            res.redirect('/error')
-        } else {
-            console.log(dbaccounts);
-            res.render('accounts/accountList', {accounts: dbaccounts});
-        }
-    })
-}
+// vai buscar todas as accounts
+accountController.showAll = function () {
+  return Account.find();
+};
 
-// mostra 1 account por id
-accountController.show = function(req, res){
-    Account.findOne({_id:req.params.id}).exec((err, dbaccount)=>{
-        if (err){
-            console.log('Erro a ler');
-            res.redirect('/error')
-        } else {
-            res.render('accounts/accountViewDetails', {account: dbaccount});
-        }
-    })
-}
+// vai buscar account por id
+accountController.show = function (id) {
+  return Account.findOne({ _id: id });
+};
 
-// form para criar 1 account
-accountController.formCreate = function(req,res){
-    res.render('accounts/createForm');
-}
+// cria account
+accountController.create = function (req, res) {
+  var account;
+  /*  //if email exists
+    if(req.body.email){
+        let email = req.body.email;
+        account = Account.findOne({email: email});
+    }
 
-// cria 1 account como resposta a um post de um form
-accountController.create = function(req,res){
-    var account = new Account(req.body);
-    account.save((err)=>{
-        if (err){
-            console.log('Erro a gravar');
-            res.redirect('/error')
-        } else {
-            res.redirect('/accounts');
-        }
-    })
-}
+    if(account){
+        res.locals.message = "Email já se encontra registado, efetue login ou utilize um email diferente.";
+        res.render('error');
+    } */
+
+  account = new Account(req.body);
+  account.save((err) => {
+    if (err) {
+      console.log("Erro a gravar");
+      res.redirect("/error");
+    } else {
+      res.redirect("/accounts");
+    }
+  });
+};
 
 // mostra 1 account para edicao
-accountController.formEdit = function(req, res){
-    Account.findOne({_id:req.params.id}).exec((err, dbaccount)=>{
-        if (err){
-            console.log('Erro a ler');
-            res.redirect('/error')
-        } else {
-            res.render('accounts/accountEditDetails', {account: dbaccount});
-        }
-    })
-}
+accountController.formEdit = function (req, res) {
+  Account.findOne({ _id: req.params.id }).exec((err, dbaccount) => {
+    if (err) {
+      console.log("Erro a ler");
+      res.redirect("/error");
+    } else {
+      res.render("accounts/accountEditDetails", { account: dbaccount });
+    }
+  });
+};
 
 // edita 1 account como resposta a um post de um form editar
-accountController.edit = function(req,res){
-    Account.findByIdAndUpdate(req.body._id, req.body, (err, editedAccount)=>{
-        if (err){
-            console.log('Erro a gravar');
-            res.redirect('/error')
-        } else {
-            res.redirect('/accounts/show/'+req.body._id);
-        }
-    } )
-}
+accountController.edit = function (req, res) {
+  Account.findByIdAndUpdate(req.body._id, req.body, (err, editedAccount) => {
+    if (err) {
+      console.log("Erro a gravar");
+      res.redirect("/error");
+    } else {
+      res.redirect("/accounts/show/" + req.body._id);
+    }
+  });
+};
 
-// elimina 1 account
-accountController.delete = function(req, res){
-    Account.remove({_id:req.params.id}).exec((err)=>{
-        if (err){
-            console.log('Erro a ler');
-            
-        } else {
-            res.redirect('/accounts')
-        }
-    })
-}
+// apaga uma conta por id
+accountController.delete = function (id) {
+  return Account.deleteOne({ _id: id });
+};
 
 module.exports = accountController;
