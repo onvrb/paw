@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Account List</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Account List</h1>
+      <% if(accounts.length>0) { %>
+        <table class="list-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Id</th>
+              <th>Account Name</th>
+              <th>Detalhes</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <% for(var i=0; i<accounts.length;i++) { %>
+              <tr>
+                <td> <%=i%> </td>
+                <td> <%=accounts[i]._id%></a></td>
+                <td> <%= accounts[i].name%></a></td>
+                <td><a href="/accounts/show/<%= accounts[i]._id%> "> Ver </td>
+                <td><a href="/accounts/edit/<%= accounts[i]._id%> "> Editar </a></td>
+                <td><a href="/accounts/delete/<%= accounts[i]._id%> "> Eliminar </a></td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <div>No employees found.</div>
+      <% } %>
+    </div>
+    <h3><a href="/accounts/create">Criar uma nova Account</a></h3>
+  </body>
+</html>
