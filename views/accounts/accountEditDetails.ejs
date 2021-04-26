@@ -16,6 +16,13 @@
               <!-- Como o id não pode ser alterado usamos o input hidden para o enviar como campo do formulário. -->
               <td><input type="hidden" name="_id" id="_id" value="<%= account._id %>"><%= account.name %></td>
               </tr>
+
+              <tr>
+                <td>e-mail</td>
+                <td>:</td>
+                <td><input type="text" name="email" id="email" value="<%= account.email %>"></td>
+              </tr>
+
           <tr>
               <td>Name</td>
               <td>:</td>
@@ -27,6 +34,7 @@
               <td>:</td>
               <td><input type="text" name="password" id="password" value="<%= account.password %>"></td>
             </tr>
+            
             <tr>
               <td colspan="2"><button type="submit">Edit</button></td>
             </tr>
