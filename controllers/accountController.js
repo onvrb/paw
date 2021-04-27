@@ -31,7 +31,8 @@ accountController.create = function (req, res) {
   account.save((err) => {
     if (err) {
       console.log("Erro a gravar");
-      res.redirect("/error");
+      res.locals.message = "Email já se encontra registado, efetue login ou utilize um email diferente.";
+      res.render('error');
     } else {
       res.redirect("/accounts");
     }
