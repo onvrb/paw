@@ -8,6 +8,9 @@ var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var accountsRouter = require('./routes/accounts');
+var locationsRouter = require('./routes/locations');
+// var eventsRouter = require('./routes/events');
+
 const { log } = require('console');
 
 mongoose.Promise = global.Promise
@@ -31,7 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/accounts', accountsRouter);
-// app.use('/events', accountsRouter);
+app.use('/locations', locationsRouter);
+// app.use('/events', eventsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

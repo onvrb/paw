@@ -20,19 +20,19 @@
               <tr>
                 <td>e-mail</td>
                 <td>:</td>
-                <td><input type="text" name="email" id="email" value="<%= account.email %>"></td>
+                <td><input type="text" name="email" id="email" required value="<%= account.email %>"></td>
               </tr>
 
           <tr>
               <td>Name</td>
               <td>:</td>
-              <td><input type="text" name="name" id="name" value="<%= account.name %>"></td>
+              <td><input type="text" name="name" id="name" required value="<%= account.name %>"></td>
             </tr>
             
             <tr>
               <td>Password</td>
               <td>:</td>
-              <td><input type="text" name="password" id="password" value="<%= account.password %>"></td>
+              <td><input type="text" name="password" id="password" required value="<%= account.password %>"></td>
             </tr>
 
             <tr>
@@ -42,7 +42,6 @@
                 <select name="type" id="type" value="<%= account.type %>">
                   <option value="user">user</option>
                   <option value="promotor">promotor</option>
-                  <option value="admin">admin</option>
                 </select></td>
             </tr>
             
@@ -54,6 +53,7 @@
     </form>
     </div>
     <h3><a href="/accounts">Ver todos os account</a></h3>
+    <h3><a href="javascript: history.back()">Voltar atrás</a></h3>
   </body>
 </html>
 

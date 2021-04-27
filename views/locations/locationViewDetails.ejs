@@ -1,47 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Account Detail</title>
+    <title>Location Detail</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <div class="container">
-      <h1>Account Detail</h1>
+      <h1>Location Detail</h1>
       <table>
         <tbody>
         <tr>
             <td>Id</td>
             <td>:</td>
-            <td><%= account._id %></td>
+            <td><%= location._id %></td>
             </tr>
 
             <tr>
-                <td>e-mail</td>
+                <td>Location Name</td>
                 <td>:</td>
-                <td><%= account.email %></td>
+                <td><%= location.name %></td>
               </tr>
 
         <tr>
-            <td>Name</td>
+            <td>Address</td>
             <td>:</td>
-            <td><%= account.name %></td>
+            <td><%= location.address %></td>
           </tr>
           
           <tr>
-            <td>Password</td>
+            <td>Capacity</td>
             <td>:</td>
-            <td><%= account.password %> </td>
-          </tr>
-
-          <tr>
-            <td>Tipo</td>
-            <td>:</td>
-            <td><%= account.type %> </td>
+            <td><%= location.capacity %> </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <h3><a href="/accounts">Ver todas as accounts</a></h3>
+    <h3><a href="/locations">Ver todas as locations</a></h3>
     <h3><a href="javascript: history.back()">Voltar atrás</a></h3>
   </body>
 </html>
