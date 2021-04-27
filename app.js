@@ -12,7 +12,7 @@ const { log } = require('console');
 
 mongoose.Promise = global.Promise
 
-mongoose.connect('mongodb+srv://paw:Wf6U8cKipS7aa2EV@cluster0.lxdxs.mongodb.net/accounts?ssl=true')
+mongoose.connect('mongodb+srv://paw:Wf6U8cKipS7aa2EV@cluster0.lxdxs.mongodb.net/accounts?ssl=true',{ useNewUrlParser: true, useUnifiedTopology: true })
   .then(()=> console.log(' connected to DB!'))
   .catch(()=> console.log(' error connecting to DB!'))
 
