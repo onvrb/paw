@@ -4,7 +4,8 @@ var AccountSchema = new mongoose.Schema({
     email:{ type:String,
     unique:true,},
     name: String,
-    password: String
+    password: String,
+    tipo:String
 });
 
 module.exports = mongoose.model('Account', AccountSchema);

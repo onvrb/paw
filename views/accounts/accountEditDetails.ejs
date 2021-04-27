@@ -34,6 +34,17 @@
               <td>:</td>
               <td><input type="text" name="password" id="password" value="<%= account.password %>"></td>
             </tr>
+
+            <tr>
+              <td>Tipo</td>
+              <td>:</td>
+              <td>
+                <select name="tipo" id="tipo" value="<%= account.tipo %>">
+                  <option value="user">user</option>
+                  <option value="promotor">promotor</option>
+                  <option value="admin">admin</option>
+                </select></td>
+            </tr>
             
             <tr>
               <td colspan="2"><button type="submit">Edit</button></td>
