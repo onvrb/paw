@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>event Detail</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Event Detail</h1>
+      <table>
+        <tbody>
+        <tr>
+            <td>Id</td>
+            <td>:</td>
+            <td><%= event._id %></td>
+            </tr>
+
+            <tr>
+                <td>nome</td>
+                <td>:</td>
+                <td><%= event.nome %></td>
+              </tr>
+
+        <tr>
+            <td>desc</td>
+            <td>:</td>
+            <td><%= event.desc %></td>
+          </tr>
+          
+          <tr>
+            <td>n bilhetes</td>
+            <td>:</td>
+            <td><%= event.n_bilhetes_restantes %> </td>
+          </tr>
+          <tr>
+            <td>preco</td>
+            <td>:</td>
+            <td><%= event.preco %> </td>
+          </tr>
+        
+        </tbody>
+      </table>
+    </div>
+    <h3><a href="/events">Ver todas as events</a></h3>
+    <h3><a href="javascript: history.back()">Voltar atrás</a></h3>
+  </body>
+</html>
+

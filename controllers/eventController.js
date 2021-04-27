@@ -1,16 +1,16 @@
 var mongoose = require("mongoose");
-var Event = require("../models/event");
+var event = require("../models/event");
 
 var eventController = {};
 
-// vai buscar todas as events
+// vai buscar todas os events
 eventController.showAll = function () {
-  return Event.find();
+  return event.find();
 };
 
 // vai buscar event por id
 eventController.show = function (id) {
-  return Event.findOne({ _id: id });
+  return event.findOne({ _id: id });
 };
 
 // cria event
@@ -19,7 +19,7 @@ eventController.create = function (req, res) {
   /*  //if email exists
     if(req.body.email){
         let email = req.body.email;
-        event = Event.findOne({email: email});
+        event = event.findOne({email: email});
     }
 
     if(event){
@@ -27,7 +27,7 @@ eventController.create = function (req, res) {
         res.render('error');
     } */
 
-  event = new Event(req.body);
+  event = new event(req.body);
   event.save((err, doc) => {
     if (err) {
       console.log(err);
@@ -46,7 +46,7 @@ eventController.create = function (req, res) {
 
 // mostra 1 event para edicao
 eventController.formEdit = function (req, res) {
-  Event.findOne({ _id: req.params.id }).exec((err, dbevent) => {
+  event.findOne({ _id: req.params.id }).exec((err, dbevent) => {
     if (err) {
       console.log("Erro a ler");
       res.redirect("/error");
@@ -58,7 +58,7 @@ eventController.formEdit = function (req, res) {
 
 // edita 1 event como resposta a um post de um form editar
 eventController.edit = function (req, res) {
-  Event.findByIdAndUpdate(req.body._id, req.body, (err, editedEvent) => {
+  event.findByIdAndUpdate(req.body._id, req.body, (err, editedevent) => {
     if (err) {
       console.log("Erro a gravar");
       res.redirect("/error");
@@ -70,7 +70,7 @@ eventController.edit = function (req, res) {
 
 // apaga uma conta por id
 eventController.delete = function (id) {
-  return Event.deleteOne({ _id: id });
+  return event.deleteOne({ _id: id });
 };
 
 module.exports = eventController;
