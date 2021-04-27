@@ -31,7 +31,6 @@ accountController.create = function (req, res) {
   account.save((err, doc) => {
     if (err) {
       console.log(err);
-      // console.log("typeof: " + typeof err); //debug
       if (err.code === 11000) { // duplicate key error collection
         res.render('error', { message: "Email já se encontra registado, efetue login ou utilize um email diferente." });
       } 
