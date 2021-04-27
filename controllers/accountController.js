@@ -28,13 +28,13 @@ accountController.create = function (req, res) {
     } */
 
   account = new Account(req.body);
-  account.save((err) => {
+  account.save((err, doc) => {
     if (err) {
       console.log("Erro a gravar");
       res.locals.message = "Email já se encontra registado, efetue login ou utilize um email diferente.";
       res.render('error');
     } else {
-      res.redirect("/accounts");
+      res.redirect("/accounts/show/" + doc._id);
     }
   });
 };
