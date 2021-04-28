@@ -34,6 +34,11 @@ router.get("/create", (req, res) => {
   res.render("accounts/createForm");
 });
 
+// form para backoffice
+router.get("/backoffice", (req, res) => {
+  res.render("backoffice");
+});
+
 router.post("/create", accountController.create); //create
 router.get("/edit/:id", accountController.formEdit); //formEdit
 router.post("/edit/:id", accountController.edit); //edit
