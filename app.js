@@ -9,14 +9,14 @@ var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var accountsRouter = require('./routes/accounts');
 var locationsRouter = require('./routes/locations');
-// var eventsRouter = require('./routes/events');
+var eventsRouter = require('./routes/events');
 
 const { log } = require('console');
 
 mongoose.Promise = global.Promise
 mongoose.set('useCreateIndex', true);
 
-mongoose.connect('mongodb+srv://paw:Wf6U8cKipS7aa2EV@cluster0.lxdxs.mongodb.net/accounts?ssl=true',{ useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://paw:Wf6U8cKipS7aa2EV@cluster0.lxdxs.mongodb.net/paw?ssl=true',{ useNewUrlParser: true, useUnifiedTopology: true })
   .then(()=> console.log(' connected to DB!'))
   .catch(()=> console.log(' error connecting to DB!'))
 
@@ -35,7 +35,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/accounts', accountsRouter);
 app.use('/locations', locationsRouter);
-// app.use('/events', eventsRouter);
+app.use('/events', eventsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
