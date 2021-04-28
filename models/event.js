@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var EventSchema = new mongoose.Schema({
-    nome:String,
+    nome: String,
     desc: String,
    // localização: String,
     n_bilhetes_restantes: Number,
