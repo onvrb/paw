@@ -1,16 +1,22 @@
 var mongoose = require("mongoose");
 var Event = require("../models/event");
 
+
+
+
 var eventController = {};
 
 // vai buscar todas os events
 eventController.showAll = function () {
   return Event.find();
+  
 };
+
 
 // vai buscar event por id
 eventController.show = function (id) {
   return Event.findOne({ _id: id });
+ 
 };
 
 // cria event
@@ -58,4 +64,7 @@ eventController.delete = function (id) {
   return Event.deleteOne({ _id: id });
 };
 
+
+
 module.exports = eventController;
+

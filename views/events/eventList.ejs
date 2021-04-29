@@ -35,7 +35,15 @@
                 <td><a href="/events/edit/<%= events[i]._id%> "> Editar </a></td>
                 <td><a href="/events/delete/<%= events[i]._id%> "> Eliminar </a></td>
               </tr>
+
             <% } %>
+            
+              <select  name="localizacao">
+                <% for(var i=0; i<locations.length;i++) { %>
+                <option value="name"><%=locations[i].name%></option>
+                <% } %>
+              </select>
+             
           </tbody>
         </table>
       <% } else { %>

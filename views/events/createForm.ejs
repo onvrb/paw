@@ -18,6 +18,13 @@
               <td><input type="text" name="desc" required/></td>
             </tr>
             <tr>
+            <select  name="localizacao">
+              <% for(var i=0; i<locations.length;i++) { %>
+              <option value="name"><%=locations[i].name%></option>
+              <% } %>
+            </select>
+          </tr>
+            <tr>
               <td>nbilhetes disp</td>
               <td><input type="number" name="n_bilhetes_restantes" required/></td>
             </tr>

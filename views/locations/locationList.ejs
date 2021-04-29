@@ -34,6 +34,13 @@
                 <td><a href="/locations/delete/<%= locations[i]._id%> "> Eliminar </a></td>
               </tr>
             <% } %>
+            
+              <select  name="localizacao">
+                <% for(var i=0; i<locations.length;i++) { %>
+                <option value="name"><%=locations[i].name%></option>
+                <% } %>
+              </select>
+              
           </tbody>
         </table>
       <% } else { %>

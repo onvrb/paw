@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var eventController = require("../controllers/eventController");
+var locationController = require("../controllers/locationController");
 
 // mostra todos events
 router.get("/", (req, res) => {
@@ -8,7 +9,7 @@ router.get("/", (req, res) => {
   eventController
     .showAll()
     .then((data) => {
-      res.render("events/eventList", { events: data });
+      res.render("events/eventList", { events: data , locations: data});
     })
     .catch((error) => {
       res.redirect("/error");
@@ -22,7 +23,7 @@ router.get("/show/:id", (req, res) => {
   eventController
     .show(id)
     .then((data) => {
-      res.render("events/eventViewDetails", { event: data });
+      res.render("events/eventViewDetails", { event: data , locations: data});
     })
     .catch((error) => {
       res.redirect("/error");
@@ -34,9 +35,11 @@ router.get("/create", (req, res) => {
   res.render("events/createForm");
 });
 
+
 router.post("/create", eventController.create); //create
 router.get("/edit/:id", eventController.formEdit); //formEdit
 router.post("/edit/:id", eventController.edit); //edit
+
 
 // elimina 1 event
 router.get("/delete/:id", (req, res) => {
@@ -52,3 +55,5 @@ router.get("/delete/:id", (req, res) => {
 });
 
 module.exports = router;
+
+
