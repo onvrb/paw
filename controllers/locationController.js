@@ -1,3 +1,4 @@
+const { NotExtended } = require("http-errors");
 var mongoose = require("mongoose");
 var Location = require("../models/location");
 
@@ -72,5 +73,36 @@ locationController.edit = function (req, res) {
 locationController.delete = function (id) {
   return Location.deleteOne({ _id: id });
 };
+
+
+// mostra todos os items
+locationController.showAllRest = function(req, res){
+  Location.find({}).exec((err,dblocations)=>{
+    if (err){
+      console.log('Erro ao ler');
+      res.redirect('/error');
+    } else {
+      console.log(dblocations);
+      res.render('locations/locationList', {locations: dblocations});
+    }
+  })
+}
+
+// mostra todos os items em modo rest
+locationController.showAllRest = function(req, res, next){
+  Location.find({}).exec((err,dblocations)=>{
+    if (err){
+      console.log('Erro ao ler');
+      next(err);
+      // res.redirect('/error');
+    } else {
+      res.json(dblocations);
+      // console.log(dblocations);
+      // res.render('locations/locationList', {locations: dblocations});
+    }
+  })
+}
+
+
 
 module.exports = locationController;
